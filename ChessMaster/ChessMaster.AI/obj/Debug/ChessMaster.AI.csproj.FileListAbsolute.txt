@@ -1,0 +1,6 @@
+C:\Users\Christian Moore\Documents\Visual Studio 2017\Projects\SoftwareProjectsInExcistingCode\Chess-Masters-master\ChessMaster\ChessMaster.AI\bin\Debug\ChessMaster.AI.dll
+C:\Users\Christian Moore\Documents\Visual Studio 2017\Projects\SoftwareProjectsInExcistingCode\Chess-Masters-master\ChessMaster\ChessMaster.AI\bin\Debug\ChessMaster.AI.pdb
+C:\Users\Christian Moore\Documents\Visual Studio 2017\Projects\SoftwareProjectsInExcistingCode\Chess-Masters-master\ChessMaster\ChessMaster.AI\obj\Debug\ChessMaster.AI.csprojAssemblyReference.cache
+C:\Users\Christian Moore\Documents\Visual Studio 2017\Projects\SoftwareProjectsInExcistingCode\Chess-Masters-master\ChessMaster\ChessMaster.AI\obj\Debug\ChessMaster.AI.csproj.CoreCompileInputs.cache
+C:\Users\Christian Moore\Documents\Visual Studio 2017\Projects\SoftwareProjectsInExcistingCode\Chess-Masters-master\ChessMaster\ChessMaster.AI\obj\Debug\ChessMaster.AI.dll
+C:\Users\Christian Moore\Documents\Visual Studio 2017\Projects\SoftwareProjectsInExcistingCode\Chess-Masters-master\ChessMaster\ChessMaster.AI\obj\Debug\ChessMaster.AI.pdb
