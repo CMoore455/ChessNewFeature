@@ -22,6 +22,18 @@ namespace ChessMaster.Pieces
             }
         }
 
+        public Pawn(bool isWhite = true) : base(isWhite)
+        {
+            if (IsWhite)
+            {
+                PieceImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images/white_pawn.png");
+            }
+            else
+            {
+                PieceImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images/black_pawn.png");
+            }
+        }
+
         public override List<PiecePossibleMove> GetPossibleMoves(List<BasePiece> board)
         {
             return GetPawnMoves(board, IsFirstMove, IsWhite);

@@ -66,6 +66,7 @@
                 <MenuItem Header="New Game">
                     <MenuItem Header="New game against AI" Command="{Binding NewGameAgainstAICommand}"/>
                     <MenuItem Header="New game against human" Command="{Binding NewGameAgainstHumanCommand}"/>
+                    <MenuItem Header="New Game against human chess 960" Command="{Binding NewGameAgainstHumanChess960Command}"/>
                 </MenuItem>
                 <MenuItem Header="Undo Move" Command="{Binding UnmakeMoveCommand}"/>
                 <Separator/>

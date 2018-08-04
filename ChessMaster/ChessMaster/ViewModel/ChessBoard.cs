@@ -13,7 +13,7 @@ namespace ChessMaster.ViewModel
 
     public class ChessBoard
     {
-       
+
         public BasePiece CurrentPiece = null;
 
         public List<PiecePossibleMove> CurrentPiecePossibleMoves;
@@ -32,16 +32,34 @@ namespace ChessMaster.ViewModel
         public Move LastMadeMove { get; set; }
         public ChessBoard(bool isNormalGame)
         {
-            List<BasePiece> blackPieces = new List<BasePiece>
+            List<BasePiece> blackPieces;
+            List<BasePiece> whitePieces;
+            if (isNormalGame)
+            {
+                blackPieces = new List<BasePiece>
                               { new Rook(0,0, false), new Knight(1,0, false),
                                 new Bishop(2,0, false), new Queen(3,0, false),
                                 new King(4,0, false), new Bishop(5,0, false),
                                 new Knight(6,0, false), new Rook(7,0, false)};
-            List<BasePiece> whitePieces = new List<BasePiece>
+                whitePieces = new List<BasePiece>
                               { new Rook(0,7), new Knight(1,7),
                                 new Bishop(2,7), new Queen(3,7),
                                 new King(4,7), new Bishop(5,7),
                                 new Knight(6,7), new Rook(7,7)};
+            }
+            else
+            {
+                blackPieces = new List<BasePiece>
+                              { new Rook(false), new Knight(false),
+                                new Bishop(false), new Queen(false), new Bishop(false),
+                                new Knight(false), new Rook(false)};
+                blackPieces.Insert(4, new King(false)); 
+                blackPieces = SetBlackPiecesForChess960(blackPieces);
+
+                whitePieces = MirrorBlackPieces(blackPieces); 
+
+            }
+
             Board = new List<ChessCell>();
             HistoryOfMoves = new List<Move>();
             CurrentPiecePossibleMoves = new List<PiecePossibleMove>();
@@ -74,9 +92,99 @@ namespace ChessMaster.ViewModel
             Logs = new List<LogMove>();
             LastLogPosition = -1;
         }
-       
 
+        /// <summary>
+        /// This will mirror the black pieces for the white pieces. 
+        /// </summary>
+        /// <param name="blackPieces"></param>
+        /// <returns></returns>
+        private List<BasePiece> MirrorBlackPieces(List<BasePiece> blackPieces)
+        {
+            List<BasePiece> whitePieces = new List<BasePiece>();
+            for(int i = 0; i < blackPieces.Count; i++)
+            {
+                switch(blackPieces[i].GetType().Name)
+                {
+                    case "Knight":
+                        whitePieces.Add(new Knight(i,7));
+                        break;
+                    case "Rook":
+                        whitePieces.Add(new Rook(i, 7));
+                        break;
+                    case "King":
+                        whitePieces.Add(new King(i, 7));
+                        break;
+                    case "Queen":
+                        whitePieces.Add(new Queen(i, 7));
+                        break;
+                    case "Bishop":
+                        whitePieces.Add(new Bishop(i, 7));
+                        break;
+                }
+            }
+            return whitePieces;
+        }
 
+        /// <summary>
+        /// This method is for setting the pieces in the contraints of Chess 960
+        /// </summary>
+        /// <param name="blackPieces">The black pieces on the board</param>
+        /// <returns>The final randomized black pieces based on Chess 960</returns>
+        private List<BasePiece> SetBlackPiecesForChess960(List<BasePiece> blackPieces)
+        {
+            Random rand = new Random();
+            int i = 0;
+            List<BasePiece> result = new List<BasePiece>(blackPieces);
+            BasePiece rookOne = result[0];
+            BasePiece rookTwo = (Rook)result[result.Count - 1];
+            result[result.Count - 1].Position = new Point(5555, 0);
+
+            King king = (King)result[4];
+            Bishop bishopOne = (Bishop)result[2];
+            Bishop bishopTwo = (Bishop)result[5];
+            bool isValid = true;
+            do
+            {
+                isValid = true;
+                result = result.OrderBy(piece => rand.Next()).ToList();
+                SetXAndYForChess960ForBlack(result);
+                int indexKing = result.IndexOf(king);
+                bool isRookOneLeftOfKing = result.IndexOf(rookOne) < result.IndexOf(king);
+                bool isRookTwoLeftOfKing = result.IndexOf(rookTwo) < result.IndexOf(king);
+                bool isKingOnEdge = result.IndexOf(king) == 0 || result.IndexOf(king) == result.Count - 1;
+                bool isBishopOneOnBlack = result.IndexOf(bishopOne) % 2 == 0;
+                bool isBishopTwoOnBlack = result.IndexOf(bishopTwo) % 2 == 0;
+                if(!isKingOnEdge)
+                {
+                    if (isRookOneLeftOfKing == isRookTwoLeftOfKing)
+                    {
+                        isValid = !isValid;
+                        continue;
+                    }
+                }
+                else
+                {
+                    isValid = !isValid;
+                    continue;
+                }
+                if(isBishopOneOnBlack == isBishopTwoOnBlack)
+                {
+                    isValid = !isValid;
+                    continue; 
+                }
+            } while (!isValid);
+            
+            return result;
+        }
+
+        private void SetXAndYForChess960ForBlack(List<BasePiece> blackPieces)
+        {
+            for(int i = 0; i < blackPieces.Count; i++)
+            {
+                blackPieces[i].Position = new Point(i, 0);
+            }
+        }
+    
         /// <summary>
         /// Makes a move on chess board
         /// </summary>

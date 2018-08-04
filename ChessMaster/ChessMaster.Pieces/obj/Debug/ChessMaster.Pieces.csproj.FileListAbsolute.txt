@@ -4,3 +4,9 @@ C:\Users\Christian Moore\Documents\Visual Studio 2017\Projects\SoftwareProjectsI
 C:\Users\Christian Moore\Documents\Visual Studio 2017\Projects\SoftwareProjectsInExcistingCode\Chess-Masters-master\ChessMaster\ChessMaster.Pieces\obj\Debug\ChessMaster.Pieces.csproj.CoreCompileInputs.cache
 C:\Users\Christian Moore\Documents\Visual Studio 2017\Projects\SoftwareProjectsInExcistingCode\Chess-Masters-master\ChessMaster\ChessMaster.Pieces\obj\Debug\ChessMaster.Pieces.dll
 C:\Users\Christian Moore\Documents\Visual Studio 2017\Projects\SoftwareProjectsInExcistingCode\Chess-Masters-master\ChessMaster\ChessMaster.Pieces\obj\Debug\ChessMaster.Pieces.pdb
+C:\Users\Christian Moore\Documents\GitHub\ChessNewFeature\ChessMaster\ChessMaster.Pieces\bin\Debug\ChessMaster.Pieces.dll
+C:\Users\Christian Moore\Documents\GitHub\ChessNewFeature\ChessMaster\ChessMaster.Pieces\bin\Debug\ChessMaster.Pieces.pdb
+C:\Users\Christian Moore\Documents\GitHub\ChessNewFeature\ChessMaster\ChessMaster.Pieces\obj\Debug\ChessMaster.Pieces.csprojAssemblyReference.cache
+C:\Users\Christian Moore\Documents\GitHub\ChessNewFeature\ChessMaster\ChessMaster.Pieces\obj\Debug\ChessMaster.Pieces.csproj.CoreCompileInputs.cache
+C:\Users\Christian Moore\Documents\GitHub\ChessNewFeature\ChessMaster\ChessMaster.Pieces\obj\Debug\ChessMaster.Pieces.dll
+C:\Users\Christian Moore\Documents\GitHub\ChessNewFeature\ChessMaster\ChessMaster.Pieces\obj\Debug\ChessMaster.Pieces.pdb

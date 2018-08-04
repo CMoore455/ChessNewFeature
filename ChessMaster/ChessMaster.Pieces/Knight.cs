@@ -21,7 +21,17 @@ namespace ChessMaster.Pieces
                 PieceImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images/black_knight.png");
             }
         }
-
+        public Knight(bool isWhite = true) : base(isWhite)
+        {
+            if (IsWhite)
+            {
+                PieceImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images/white_knight.png");
+            }
+            else
+            {
+                PieceImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images/black_knight.png");
+            }
+        }
         public override List<PiecePossibleMove> GetPossibleMoves(List<BasePiece> board)
         {
             return base.GetKnightMoves(board);

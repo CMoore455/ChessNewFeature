@@ -22,6 +22,18 @@ namespace ChessMaster.Pieces
             }
         }
 
+        public Queen(bool isWhite = true) : base(isWhite)
+        {
+            if (IsWhite)
+            {
+                PieceImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images/white_queen.png");
+            }
+            else
+            {
+                PieceImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images/black_queen.png");
+            }
+        }
+
         public override List<PiecePossibleMove> GetPossibleMoves(List<BasePiece> board)
         {
             return GetDiagonalMoves(board, BOARDLENGTH).Union(GetVerticalMoves(board, BOARDLENGTH)).Union(GetHorizontalMoves(board, BOARDLENGTH)).ToList();

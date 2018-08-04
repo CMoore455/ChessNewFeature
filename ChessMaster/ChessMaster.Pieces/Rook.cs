@@ -22,6 +22,18 @@ namespace ChessMaster.Pieces
             }
         }
 
+        public Rook(bool isWhite = true) : base(isWhite)
+        {
+            if (IsWhite)
+            {
+                PieceImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images/white_rook.png");
+            }
+            else
+            {
+                PieceImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images/black_rook.png");
+            }
+        }
+
         public override List<PiecePossibleMove> GetPossibleMoves(List<BasePiece> board)
         {
             return base.GetVerticalMoves(board, BOARDLENGTH).Union(GetHorizontalMoves(board, BOARDLENGTH)).ToList();

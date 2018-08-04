@@ -116,7 +116,7 @@ namespace ChessMaster
         private RelayCommand _newGameAgainstHumanCommand;
         private RelayCommand _cellCommand;
         private RelayCommand _unmakeMoveCommand;
-       
+        private RelayCommand _newGameAgainstHumanChess960Command;
 
 
         public RelayCommand ExitCommand => _exitCommand ?? (_exitCommand = new RelayCommand(ExecuteExitCommand));
@@ -124,6 +124,8 @@ namespace ChessMaster
         public RelayCommand NewGameAgainstHumanCommand => _newGameAgainstHumanCommand ?? (_newGameAgainstHumanCommand = new RelayCommand(ExecuteNewGameAgainstHumanCommand));
         public RelayCommand CellCommand => _cellCommand ?? (_cellCommand = new RelayCommand(ExecuteCellCommand));
         public RelayCommand UnmakeMoveCommand => _unmakeMoveCommand ?? (_unmakeMoveCommand = new RelayCommand(ExecuteUnmakeMoveCommand, CanExecuteUnmakeMoveCommand));
+        public RelayCommand NewGameAgainstHumanChess960Command => _newGameAgainstHumanChess960Command ?? (_newGameAgainstHumanChess960Command = new RelayCommand(ExecuteNewGameAgainstHumanCommandChess960));
+
         private Evaluator Evaluator = new Evaluator();
         #endregion
         private bool IsNormalGame = true;
@@ -172,6 +174,17 @@ namespace ChessMaster
             ChangeTimersBorderColor();
         }
 
+        public void ExecuteNewGameAgainstHumanCommandChess960(object obj)
+        {
+            _versusAI = false;
+            ChessBoard = new ChessBoard(!IsNormalGame);
+            Logs = new List<LogMove>();
+            Cells = ChessBoard.Board;
+            WhiteSideTime = new TimeSpan();
+            BlackSideTime = new TimeSpan();
+            _isWhiteMove = true;
+            ChangeTimersBorderColor();
+        }
         public void ExecuteNewGameAgainstAICommand(object obj)
         {
             _versusAI = true;

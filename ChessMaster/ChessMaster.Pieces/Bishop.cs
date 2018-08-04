@@ -23,6 +23,20 @@ namespace ChessMaster.Pieces
 
         }
 
+        public Bishop(bool isWhite = true) : base(isWhite)
+        {
+            if (IsWhite)
+            {
+                PieceImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images/white_bishop.png");
+            }
+            else
+            {
+                PieceImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images/black_bishop.png");
+            }
+
+        }
+
+
         public override List<PiecePossibleMove> GetPossibleMoves(List<BasePiece> board)
         {
             return base.GetDiagonalMoves(board, BOARDLENGTH);

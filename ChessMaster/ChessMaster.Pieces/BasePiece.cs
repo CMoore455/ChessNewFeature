@@ -33,6 +33,13 @@ namespace ChessMaster.Pieces
             IsFirstMove = true;
         }
 
+
+        public BasePiece(bool isWhite = true)
+        {
+            IsWhite = isWhite;
+            IsFirstMove = true;
+        }
+
         public virtual BasePiece CopyPiece()
         {
             return new BasePiece((int)Position.X, (int)Position.Y, IsWhite)
